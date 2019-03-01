@@ -39,8 +39,8 @@ document.onclick = function () {
             $("#logoDiv :nth-child(3)").style.top = "0px"
             $("#logoDiv :nth-child(3)").style.left = "0px"
             setTimeout(function () {
-                $("#logoDiv").style.height = "60px"
-                $("#logoDiv").style.width = "calc(100% - 40px)"
+                $("#logoDiv").style.height = "70px"
+                $("#logoDiv").style.width = "calc(100% - 110px)"
                 $("#logoDiv :nth-child(1)").style.display = "none"
                 $("#logoDiv :nth-child(3)").style.display = "none"
                 $("#logoDiv :nth-child(2)").style.width = "calc(100% - 20px)"
