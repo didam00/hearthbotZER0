@@ -1,3 +1,7 @@
+html {
+    overflow: hidden;
+}
+
 #logo {
     position:absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
     width: 150px;
@@ -7,7 +11,8 @@
 #logoDiv {
     width: 150px;
     height: 150px;
-    position:absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    transition: all 300ms;
 }
 
 #logoDiv div {
@@ -15,12 +20,14 @@
     position: absolute;
     animation-duration: 1000ms;
     animation-iteration-count: infinite;
+    transition: all 200ms;
 }
 
 #logoDiv :nth-child(1) {
     top: 0px; left: 0px;
     width: 45px; height: 105px;
     border-radius: 22.5px;
+    animation-name: logo1;
 }
 #logoDiv :nth-child(2) {
     top: 0px; left: 0px;
@@ -41,6 +48,11 @@
     border-radius: 8px;
 }
 
+@keyframes logo1 {
+    0% {height: 105px; top: 0px;}
+    50% {height: 120px; top: -15px;}
+    100% {height: 105px; top: 0px;}
+}
 @keyframes logo2 {
     0% {border-radius: 60px}
     50% {border-radius: 75px}
