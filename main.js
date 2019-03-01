@@ -20,19 +20,28 @@ document.onclick = function () {
         start = true;
         clearInterval(aniTiming)
         setTimeout(function () {
-            $("#logoDiv :nth-child(1)").style.animationName = "none"
+            $("#logoDiv :nth-child(1)").style.animationName = "byeLogo1"
+            $("#logoDiv :nth-child(1)").style.animationDuration = "200ms"
             $("#logoDiv :nth-child(2)").style.animationName = "none"
-            $("#logoDiv :nth-child(3)").style.animationName = "none"
-    
+            $("#logoDiv :nth-child(3)").style.animationName = "null"
+            $("#logoDiv :nth-child(3)").style.animationDuration = "200ms"
+            $("#logoDiv :nth-child(3)").style.animationFillMode = "forwards"
+            $("#logoDiv :nth-child(3)").style.animationIterationCount = "1"
+            
             $("#logoDiv").style.width = "calc(100% - 100px)"
-            $("#logoDiv :nth-child(1)").style.opacity = "0"
+            $("#logoDiv :nth-child(3)").style.right = "65px"
             $("#logoDiv :nth-child(2)").style.height = "100%"
             $("#logoDiv :nth-child(2)").style.width = "calc(100% - 20px)"
-            $("#logoDiv :nth-child(3)").style.width = "0px"
             setTimeout(function () {
                 $("#logoDiv").style.height = "60px"
                 $("#logoDiv :nth-child(1)").style.display = "none"
-                $("#logoDiv :nth-child(3)").style.display = "none"
+                $("#logoDiv :nth-child(2)").setAttribute("id","input")
+                $("#realInput").setAttribute("contenteditable","true")
+                $("#realInput").style.display = "block"
+                $("#logoDiv :nth-child(3)").setAttribute("id","sendButton")
+                $("#logoDiv :nth-child(3)").style.right = "30px"
+                $("#sendButton").style.width = "75px"
+                $("#logoDiv :nth-child(3)").style.height = "40px"
             },200)
         },timer)
     }
