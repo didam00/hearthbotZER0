@@ -1,5 +1,14 @@
 function $(a) {return document.querySelector(a);}
 function $$(a) {return document.querySelectorAll(a);}
+function $css(varName, varValue) {
+    var cnt = "\n * {\n --siteColor: rgb(24, 109, 255);\n }\n"
+    if(cnt.indexOf("--"+varName)!=-1) {
+        cnt = cnt.replace(RegExp("--"+varName+":.+;"),varName+": "+varValue)
+    } else {
+        cnt = cnt.replace("}",`--${varName}: ${varValue};\n }`)
+    }
+    $("#cssVar").innerHTML = cnt;
+}
 function longshadow(object, theLength, color) {
     var ls = "";
     for(i=0; i<theLength+1; i++) {
@@ -28,7 +37,8 @@ document.onclick = function () {
             $("#logoDiv :nth-child(3)").style.animationFillMode = "forwards"
             $("#logoDiv :nth-child(3)").style.animationIterationCount = "1"
             if(isPhone) {
-                $("#logoDiv").style.width = "calc(100% - 20px)"
+                $("#realInput").style.width = "calc(100% - 190px)"
+                $("#logoDiv").style.width = "calc(100% - 40px)"
             } else {
                 $("#logoDiv").style.width = "calc(100% - 100px)"
             }
@@ -46,8 +56,14 @@ document.onclick = function () {
                 $("#logoDiv :nth-child(3)").style.right = "30px"
                 $("#sendButton").style.width = "75px"
                 $("#logoDiv :nth-child(3)").style.height = "40px"
-                $("#sendButton").onmouseover = function () {$("#sendButton").style.width = "105px"}
+                $("#sendButton").onmouseover = function () {$("#sendButton").style.width = "90px"}
                 $("#sendButton").onmouseout = function () {$("#sendButton").style.width = "75px"}
+                $("#sendButton").onclick = function () {
+                    command = $("#realInput").innerText;
+                    setInterval(function () {
+                        liveCommand = $("#realInput").innerText;
+                    },1)
+                }
             },200)
         },timer)
     }

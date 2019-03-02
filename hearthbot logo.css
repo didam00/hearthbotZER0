@@ -6,7 +6,7 @@ html {
     outline: none;
 }
 
-@font-face { font-family: 'BRBA_B'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/BRBA_B.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'hmf'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/ThecircleM.woff') format('woff'); font-weight: 900; font-style: normal; }
 
 #logo {
     position:absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
@@ -57,12 +57,12 @@ html {
     display: none;
     position: absolute; left: 50%; top: 50%; transform: translate(calc(-50% - 50px), -50%);
     height: 30px;
-    width: calc(100% - 270px);
-    z-index: 2;
-    font-size: 27.5px;
+    width: calc(100% - 250px);
+    z-index: -1;
+    font-size: 28.75px;
     padding: 15px;
-    font-family: 'BRBA_B';
-    color: #202020;
+    font-family: 'hmf';
+    color: #282828;
 }
 #sendButton {
     cursor: pointer;
