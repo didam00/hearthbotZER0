@@ -27,21 +27,27 @@ document.onclick = function () {
             $("#logoDiv :nth-child(3)").style.animationDuration = "200ms"
             $("#logoDiv :nth-child(3)").style.animationFillMode = "forwards"
             $("#logoDiv :nth-child(3)").style.animationIterationCount = "1"
-            
-            $("#logoDiv").style.width = "calc(100% - 100px)"
+            if(isPhone) {
+                $("#logoDiv").style.width = "calc(100% - 20px)"
+            } else {
+                $("#logoDiv").style.width = "calc(100% - 100px)"
+            }
+            $("#logoDiv :nth-child(2)").style.width = "calc(100% - 20px)"
             $("#logoDiv :nth-child(3)").style.right = "65px"
             $("#logoDiv :nth-child(2)").style.height = "100%"
-            $("#logoDiv :nth-child(2)").style.width = "calc(100% - 20px)"
             setTimeout(function () {
                 $("#logoDiv").style.height = "60px"
                 $("#logoDiv :nth-child(1)").style.display = "none"
                 $("#logoDiv :nth-child(2)").setAttribute("id","input")
                 $("#realInput").setAttribute("contenteditable","true")
                 $("#realInput").style.display = "block"
+                $("#realInput").style.zIndex = "2"
                 $("#logoDiv :nth-child(3)").setAttribute("id","sendButton")
                 $("#logoDiv :nth-child(3)").style.right = "30px"
                 $("#sendButton").style.width = "75px"
                 $("#logoDiv :nth-child(3)").style.height = "40px"
+                $("#sendButton").onmouseover = function () {$("#sendButton").style.width = "105px"}
+                $("#sendButton").onmouseout = function () {$("#sendButton").style.width = "75px"}
             },200)
         },timer)
     }
