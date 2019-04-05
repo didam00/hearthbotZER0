@@ -1,0 +1,43 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+#chats {
+    overflow-y: auto;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: calc(100% - 40px);
+    height: calc(100% - 140px);
+}
+
+.myChats {
+    height: auto;
+    width: auto;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 18px;
+    background: white;
+    color: var(--siteColor);
+    position: absolute;
+    right: 0px;
+    font-family: "hmfs";
+    font-weight: 900;
+    line-height: 21px;
+    max-width: 90%;
+}
+.urChats {
+    height: auto;
+    width: auto;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 18px;
+    background: white;
+    color: #282828;
+    position: absolute;
+    left: 0px;
+    font-family: "hmfs";
+    font-weight: 900;
+    line-height: 21px;
+    max-width: 90%;
+}

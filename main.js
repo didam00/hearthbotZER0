@@ -1,14 +1,3 @@
-function $(a) {return document.querySelector(a);}
-function $$(a) {return document.querySelectorAll(a);}
-function $css(varName, varValue) {
-    var cnt = "\n * {\n --siteColor: rgb(24, 109, 255);\n }\n"
-    if(cnt.indexOf("--"+varName)!=-1) {
-        cnt = cnt.replace(RegExp("--"+varName+":.+;"),varName+": "+varValue)
-    } else {
-        cnt = cnt.replace("}",`--${varName}: ${varValue};\n }`)
-    }
-    $("#cssVar").innerHTML = cnt;
-}
 function longshadow(object, theLength, color) {
     var ls = "";
     for(i=0; i<theLength+1; i++) {
@@ -51,7 +40,7 @@ document.onclick = function () {
                 $("#logoDiv :nth-child(2)").setAttribute("id","input")
                 $("#realInput").setAttribute("contenteditable","true")
                 $("#realInput").style.display = "block"
-                $("#realInput").style.zIndex = "2"
+                $("#realInput").style.zIndex = "101"
                 $("#logoDiv :nth-child(3)").setAttribute("id","sendButton")
                 $("#logoDiv :nth-child(3)").style.right = "30px"
                 $("#sendButton").style.width = "75px"
@@ -60,10 +49,11 @@ document.onclick = function () {
                 $("#sendButton").onmouseout = function () {$("#sendButton").style.width = "75px"}
                 $("#sendButton").onclick = function () {
                     command = $("#realInput").innerText;
-                    setInterval(function () {
-                        liveCommand = $("#realInput").innerText;
-                    },1)
+                    fakeCmd()
                 }
+                setInterval(function () {
+                    liveCommand = $("#realInput").innerText;
+                },1)
             },200)
         },timer)
     }

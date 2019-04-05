@@ -11,20 +11,64 @@
     <link rel="shortcut icon" href="favicon.ico">
     <title>hearthbot</title>
     <link rel="stylesheet" href="hearthbot logo.css">
+    <link rel="stylesheet" href="main.css">
     <script>
         var command;
         var liveCommand;
+        function $(a) {return document.querySelector(a);}
+        function $$(a) {return document.querySelectorAll(a);}
+        function $css(varName, varValue) {
+            var cnt = $("#cssVar").innerHTML
+            if(cnt.indexOf("--"+varName)!=-1) {
+                cnt = cnt.replace(RegExp("--"+varName+":.+;"),"--"+varName+": "+varValue)
+            } else {
+                cnt = cnt.replace("}",`--${varName}: ${varValue};\n }`)
+            }
+            $("#cssVar").innerHTML = cnt;
+        }
+        function fakeCmd() {
+            cmd()
+        }
+        
+        function myChat(c, type) {
+            var bubble = $("#chats").appendChild(document.createElement("div"))
+            var bubblesHeight = 0;
+            bubble.innerHTML = c;
+            for(i=0; i<$$(".myChats").length; i++) {
+                bubblesHeight += $$(".myChats")[i].offsetHeight
+            }
+            for(i=0; i<$$(".urChats").length; i++) {
+                bubblesHeight += $$(".urChats")[i].offsetHeight
+            }
+            bubble.style.top = (($$(".myChats").length + $$(".urChats").length - 3)*10 + bubblesHeight + 41)+"px"
+            bubble.setAttribute("class","myChats")
+        }
+        
+        function urChat(c, type) {
+            var bubble = $("#chats").appendChild(document.createElement("div"))
+            var bubblesHeight = 0;
+            bubble.innerHTML = c;
+            for(i=0; i<$$(".myChats").length; i++) {
+                bubblesHeight += $$(".myChats")[i].offsetHeight
+            }
+            for(i=0; i<$$(".urChats").length; i++) {
+                bubblesHeight += $$(".urChats")[i].offsetHeight
+            }
+            bubble.style.top = (($$(".myChats").length + $$(".urChats").length - 3)*10 + bubblesHeight + 41)+"px"
+            bubble.setAttribute("class","urChats")
+        }
     </script>
     <script src="main.js"></script>
     <script src="command.js"></script>
+    <style id="siteColor">* {--siteColor: hsl(218, 100%, 55%);}</style>
     <style id="cssVar">
-        * {
-            --siteColor: hsl(218, 100%, 55%);
-        }
     </style>
     <style>
+        @font-face { font-family: 'hmf'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff') format('woff'); font-weight: normal; font-style: normal; }
+        @font-face { font-family: 'hmfs'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGR.woff') format('woff'); font-weight: normal; font-style: normal; }
         html {
             background: var(--siteColor);
+            transition: all 200ms;
         }
     </style>
 </head>
@@ -32,5 +76,6 @@
     <div id="logoDiv"><div></div><div></div><div></div><div></div></div>
     <div id="realInput"></div>
     <img src="img/hearthbotZERO LOGO.png" id="logo">
+<div id="chats"></div>
 </body>
 </html>
