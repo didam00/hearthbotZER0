@@ -20,6 +20,16 @@ function cmd() {
             case 3 : urChat("난 이 색이 좋아"); break;
             case 4 : urChat("이건 별론가?"); break;
         }
+    } else if(command.indexOf("안녕")!=-1||command.indexOf("반가워")!=-1) {
+        switch (Math.floor(Math.random()*5)) {
+            case 0 : urChat("하스봇!"); break;
+            case 1 : urChat("반가워"); break;
+            case 2 : urChat("안녕"); break;
+            case 3 : urChat("인사해줘서 고마워"); break;
+            case 4 : urChat("엉 안녕"); break;
+        }
+    } else if(command.indexOf("하스봇")!=-1) {
+
     }
     $("#realInput").style.opacity = "0"
     setTimeout(function () {
@@ -28,3 +38,13 @@ function cmd() {
     },300)
     $("#chats").scrollTop = $("#chats").scrollHeight;
 }
+/*
+ else if(command.indexOf("")!=-1) {
+
+}
+
+switch (Math.floor(Math.random()*2)) {
+    case 0 : urChat(""); break;
+    case 1 : urChat(""); break;
+}
+*/

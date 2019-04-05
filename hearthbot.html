@@ -41,21 +41,32 @@
                 bubblesHeight += $$(".urChats")[i].offsetHeight
             }
             bubble.style.top = (($$(".myChats").length + $$(".urChats").length - 3)*10 + bubblesHeight + 41)+"px"
+            bubble.style.opacity = "1"
             bubble.setAttribute("class","myChats")
+            setTimeout(function () {$("#chats").scrollTop = $("#chats").scrollHeight;},500)
         }
         
         function urChat(c, type) {
-            var bubble = $("#chats").appendChild(document.createElement("div"))
-            var bubblesHeight = 0;
-            bubble.innerHTML = c;
-            for(i=0; i<$$(".myChats").length; i++) {
-                bubblesHeight += $$(".myChats")[i].offsetHeight
-            }
-            for(i=0; i<$$(".urChats").length; i++) {
-                bubblesHeight += $$(".urChats")[i].offsetHeight
-            }
-            bubble.style.top = (($$(".myChats").length + $$(".urChats").length - 3)*10 + bubblesHeight + 41)+"px"
-            bubble.setAttribute("class","urChats")
+            if(type == null) {type = "text"}
+            setTimeout(function () {
+                var bubble = $("#chats").appendChild(document.createElement("div"))
+                var bubblesHeight = 0;
+                if(type == "img") {
+                    c = "<img src='"+c+"'></img>"
+                }
+                bubble.innerHTML = c;
+                for(i=0; i<$$(".myChats").length; i++) {
+                    bubblesHeight += $$(".myChats")[i].offsetHeight
+                }
+                for(i=0; i<$$(".urChats").length; i++) {
+                    bubblesHeight += $$(".urChats")[i].offsetHeight
+                }
+                bubble.style.top = (($$(".myChats").length + $$(".urChats").length - 3)*10 + bubblesHeight + 41)+"px"
+                bubble.style.opacity = "1"
+                bubble.setAttribute("class","urChats")
+                $("#chats").scrollTop = $("#chats").scrollHeight;
+                setTimeout(function () {$("#chats").scrollTop = $("#chats").scrollHeight;},500)
+            },Math.floor(Math.random()*500)+200)
         }
     </script>
     <script src="main.js"></script>
@@ -68,7 +79,7 @@
         @font-face { font-family: 'hmfs'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGR.woff') format('woff'); font-weight: normal; font-style: normal; }
         html {
             background: var(--siteColor);
-            transition: all 200ms;
+            transition: all 700ms;
         }
     </style>
 </head>

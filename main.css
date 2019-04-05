@@ -25,6 +25,8 @@
     font-weight: 900;
     line-height: 21px;
     max-width: 90%;
+    transition: all 500ms;
+    opacity: 0;
 }
 .urChats {
     height: auto;
@@ -40,4 +42,11 @@
     font-weight: 900;
     line-height: 21px;
     max-width: 90%;
+    transition: all 500ms;
+    opacity: 0;
+}
+
+img {
+    border-radius: 18px;
+    width: 300px;
 }
