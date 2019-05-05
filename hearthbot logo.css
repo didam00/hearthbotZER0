@@ -56,18 +56,6 @@ html {
     width: 16px; height: 16px;
     border-radius: 8px;
 }
-#realInput {
-    display: none;
-    position: absolute; left: 50%; top: 50%; transform: translate(calc(-50% - 50px), calc(-50% + 3.25px));
-    height: 30px;
-    width: calc(100% - 250px);
-    z-index: -1;
-    font-size: 25px;
-    padding: 17px;
-    font-family: 'hmf';
-    color: #282828;
-    transition: all 300ms;
-}
 #sendButton {
     cursor: pointer;
     transition: all 200ms;

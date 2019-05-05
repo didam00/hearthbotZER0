@@ -6,6 +6,8 @@ function longshadow(object, theLength, color) {
     ls = ls.replace(",","")
     object.style.boxShadow = ls;
 }
+
+var sansGame;
 var timer = 0;
 var aniTiming;
 window.onload = function () {aniTiming = setInterval(function () {timer++; if(timer==1000) {timer = 0;}},1)}
@@ -48,13 +50,42 @@ document.onclick = function () {
                 $("#sendButton").onmouseover = function () {$("#sendButton").style.width = "90px"}
                 $("#sendButton").onmouseout = function () {$("#sendButton").style.width = "75px"}
                 $("#sendButton").onclick = function () {
-                    command = $("#realInput").innerText;
                     fakeCmd()
                 }
                 setInterval(function () {
-                    liveCommand = $("#realInput").innerText;
+                    if($("#realInput"))
+                    liveCommand = $("#realInput").value;
                 },1)
             },200)
         },timer)
+    }
+}
+
+// easter Egg
+
+window.onkeydown = function () {
+    if(event.keyCode == 37) {
+        frisk.style.left = Number(frisk.style.left.replace("px","")) - 7 +"px"
+        if(Number(frisk.style.left.replace("px","")) <= 12) {
+            frisk.style.left = "2.5px"
+        }
+    }
+    if(event.keyCode == 38) {
+        frisk.style.top = Number(frisk.style.top.replace("px","")) - 7 +"px"
+        if(Number(frisk.style.top.replace("px","")) <= 12) {
+            frisk.style.top = "2.5px"
+        }
+    }
+    if(event.keyCode == 39) {
+        frisk.style.left = Number(frisk.style.left.replace("px","")) + 7 +"px"
+        if(Number(frisk.style.left.replace("px","")) >= window.innerWidth - 21) {
+            frisk.style.left = window.innerWidth - 26 + "px"
+        }
+    }
+    if(event.keyCode == 40) {
+        frisk.style.top = Number(frisk.style.top.replace("px","")) + 7 +"px"
+        if(Number(frisk.style.top.replace("px","")) >= window.innerHeight - 21) {
+            frisk.style.top = window.innerHeight - 26 + "px"
+        }
     }
 }

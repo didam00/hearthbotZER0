@@ -1,5 +1,15 @@
 ::-webkit-scrollbar {
     display: none;
+    transition: all 500ms;
+}
+
+html {
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    margin: 0;
 }
 
 #chats {
@@ -38,7 +48,7 @@
     color: #282828;
     position: absolute;
     left: 0px;
-    font-family: "hmfs";
+    font-family: "hmfs", '굴림';
     font-weight: 900;
     line-height: 21px;
     max-width: 90%;
@@ -46,7 +56,22 @@
     opacity: 0;
 }
 
-img {
+#realInput {
+    border: 0;
+    background: #00000000;
+    display: none;
+    position: absolute; left: 50%; top: 50%; transform: translate(calc(-50% - 50px), calc(-50%));
+    height: 25px;
+    width: calc(100% - 250px);
+    z-index: -1;
+    font-size: 25px;
+    padding: 17px;
+    font-family: 'hmf', '굴림';
+    color: #282828;
+    transition: all 300ms;
+}
+
+.imgMsg {
     border-radius: 18px;
     width: 300px;
 }

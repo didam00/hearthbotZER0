@@ -13,6 +13,33 @@
     <link rel="stylesheet" href="hearthbot logo.css">
     <link rel="stylesheet" href="main.css">
     <script>
+        function friskDie() {
+            document.body.innerHTML = ""
+            var die = document.createElement("iframe");
+            die.style = "opacity: 0; z-index: -1000;"
+            die.src = "https://www.youtube.com/embed/HOBKDJgz1zE?autoplay=1"
+            die.frameBorder = "0"
+            die.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            die.allowFullscreen = "true"
+            document.body.appendChild(die);
+            $("html").style.transition = "all 0s"
+            $("html").style.border = "0"
+            die.id = "dieBgm"
+        }
+        function aabb(object1, object2) {
+            var o1l = Number(object1.style.left.replace("px",""))
+            var o1t = Number(object1.style.top.replace("px",""))
+            var o1w = Number(object1.style.width.replace("px",""))
+            var o1h = Number(object1.style.height.replace("px",""))
+            var o2l = Number(object2.style.left.replace("px",""))
+            var o2t = Number(object2.style.top.replace("px",""))
+            var o2w = Number(object2.style.width.replace("px",""))
+            var o2h = Number(object2.style.height.replace("px",""))
+            if(((o1l<=o2l&&o1l+o1w>=o2l)||(o2l<=o1l&&o2l+o2w>=o1l)) && ((o1t<=o2t&&o1t+o1h>=o2t)||(o2t<=o1t&&o2t+o2h>=o1t))) {
+                return true;
+            } else return false;
+        }
+        var frisk;
         var command;
         var liveCommand;
         function $(a) {return document.querySelector(a);}
@@ -31,6 +58,20 @@
         }
         
         function myChat(c, type) {
+            if(isFrisk==true) {
+                switch (Math.floor(Math.random()*10)) {
+                    case 0 : c = "* 당신은 이것을 한것을 후회하고 있다."; break;
+                    case 1 : c = "* 당신은 제작자가 미친놈이라 생각했다."; break;
+                    case 2 : c = "* 당신은 이상함을 느꼈다."; break;
+                    case 3 : c = "* 당신은 이것을 끄기 직전이다."; break;
+                    case 4 : c = "* 당신은 의지따윈 X도 찾아볼 수 없었다."; break;
+                    case 5 : c = "* 당신은 뭐하는 짓일까."; break;
+                    case 6 : c = "* 당신은 자괴감이 오기 시작했다."; break;
+                    case 7 : c = "* 당신은 이것을 즐기고 있다."; break;
+                    case 8 : c = "* 당신은 이것을 발견함으로 기뻐하고 있다."; break;
+                    case 9 : c = "* 당신은 나가고 싶어졌다."; break;
+                }
+            }
             var bubble = $("#chats").appendChild(document.createElement("div"))
             var bubblesHeight = 0;
             bubble.innerHTML = c;
@@ -68,15 +109,17 @@
                 setTimeout(function () {$("#chats").scrollTop = $("#chats").scrollHeight;},500)
             },Math.floor(Math.random()*500)+200)
         }
-    </script>
+        </script>
     <script src="main.js"></script>
     <script src="command.js"></script>
     <style id="siteColor">* {--siteColor: hsl(218, 100%, 55%);}</style>
+    <style id="siteFont">
+    @font-face { font-family: 'hmf'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff') format('woff'); font-weight: normal; font-style: normal;}
+    @font-face { font-family: 'hmfs'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGR.woff') format('woff'); font-weight: normal; font-style: normal;}
+    </style>
     <style id="cssVar">
     </style>
     <style>
-        @font-face { font-family: 'hmf'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff') format('woff'); font-weight: normal; font-style: normal; }
-        @font-face { font-family: 'hmfs'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGR.woff') format('woff'); font-weight: normal; font-style: normal; }
         html {
             background: var(--siteColor);
             transition: all 700ms;
@@ -85,7 +128,7 @@
 </head>
 <body>
     <div id="logoDiv"><div></div><div></div><div></div><div></div></div>
-    <div id="realInput"></div>
+    <input id="realInput" onkeyup="if(event.keyCode==13) cmd()">
     <img src="img/hearthbotZERO LOGO.png" id="logo">
 <div id="chats"></div>
 </body>
